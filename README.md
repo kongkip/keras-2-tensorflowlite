@@ -1,4 +1,4 @@
-# Keras model to tflite for mobile
+# Keras model to tflite for mobile devices
 It is a great time now to develop Artificial Intelligence
 apps. There are presence of cools tools to use, from prototyping
 to production.
