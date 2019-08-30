@@ -69,7 +69,7 @@ load the keras model
 ```python
 keras_model = tf.keras.models.load_model(save_dir+keras_model_name)
 ```
-Convert the nodel to tflite
+Convert the model to tflite
 ```python
 converter = tf.lite.TFLiteConverter.from_keras_model_file(save_dir+keras_model_name)
 tflite_model = converter.convert()
@@ -116,4 +116,4 @@ for tf_result, tflite_result in zip(tf_results, tflite_results):
         print(e)
 ```
 
-[Full Code]()
+Get the full code [here](https://github.com/kongkip/keras-2-tensorflowlite/blob/master/keras_2_tflite.py)
