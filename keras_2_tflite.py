@@ -32,7 +32,7 @@ model.compile(loss="binary_crossentropy", optimizer="Adam", metrics=["binary_acc
 # fit the model
 model.fit(x, y, epochs=2, validation_split=0.2)
 
-# check of the directory exists if not create
+# check if the directory exists if not create
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
 

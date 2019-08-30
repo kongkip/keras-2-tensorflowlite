@@ -56,7 +56,7 @@ fit the model
 ```python
 model.fit(x, y, epochs=2, validation_split=0.2)
 ```
-check of the directory exists if not create
+check if the directory exists if not create
 ```python
 if not os.path.exists(save_dir):
     os.makedirs(save_dir)
