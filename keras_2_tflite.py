@@ -15,6 +15,7 @@ tf_mute_warning()
 save_dir = "models/"
 keras_model_name = "keras_model.h5"
 tf_lite_model = "tf_lite.tflite"
+tf_quant_model = "tf_quant_model.tflite"
 
 # Build a random data set
 x = np.vstack((np.random.rand(1000,10), -np.random.rand(1000,10)))
@@ -46,8 +47,14 @@ keras_model = tf.keras.models.load_model(save_dir+keras_model_name)
 converter = tf.lite.TFLiteConverter.from_keras_model_file(save_dir+keras_model_name)
 tflite_model = converter.convert()
 
-# Write the tflite model to disk
+# Quantisize the model
+# set post_training_quantize to true
+converter.post_training_quantize = True
+tfquant_model = converter.convert()
+
+# Write the tflite model and quant model to disk
 open(save_dir+tf_lite_model, "wb").write(tflite_model)
+open(save_dir+tf_quant_model, "wb").write(tfquant_model)
 
 # Load a tflite model and allocate tensors
 interpreter = tf.lite.Interpreter(model_content=tflite_model)

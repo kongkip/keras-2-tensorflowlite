@@ -75,9 +75,17 @@ converter = tf.lite.TFLiteConverter.from_keras_model_file(save_dir+keras_model_n
 tflite_model = converter.convert()
 
 ```
-Write the tflite model to disk
+Quantisize the model
+set post_training_quantize to true
+```python
+converter.post_training_quantize = True
+tfquant_model = converter.convert()
+```
+
+Write the tflite model and quant model to disk
 ```python
 open(save_dir + tf_lite_model, "wb").write(tflite_model)
+open(save_dir+tf_quant_model, "wb").write(tfquant_model)
 ```
 Load a tflite model and allocate tensors
 ```python
